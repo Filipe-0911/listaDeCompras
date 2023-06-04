@@ -53,13 +53,13 @@ function perguntaAlimento() {
     } else {
         alert('Sua lista está pronta.');
 
-        for(i = 0; i < categorias.length; i++) {
-        document.getElementById(categorias[i]).innerHTML = `<li>${categorias[i]}</li>`}
+        // for(i = 0; i < categorias.length; i++) {
+        //document.getElementById(categorias[i]).innerHTML = `<li>${categorias[i]}</li>`}
 
-        // document.getElementById('frutas').innerHTML = frutas;
-        // document.getElementById('laticinios').innerHTML = laticinios;
-        // document.getElementById('congelados').innerHTML = congelados;
-        // document.getElementById('doces').innerHTML = doces;
-        // document.getElementById('outros').innerHTML = outros;
+        document.getElementById('frutas').innerHTML = frutas;
+        document.getElementById('laticinios').innerHTML = laticinios;
+        document.getElementById('congelados').innerHTML = congelados;
+        document.getElementById('doces').innerHTML = doces;
+        document.getElementById('outros').innerHTML = outros;
     }
 }

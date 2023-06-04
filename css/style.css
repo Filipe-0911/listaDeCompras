@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-body: aquamarine;
+}
+body {
+    background-color: var(--bg-body)
+}
+.conteudo {
+    margin: auto 10%;
+    
+}
+.lista {
+    display: flex;
+    justify-content: space-between;
+}
+.frutas, .laticinios, .congelados, .doces, .outros {
+    display: flex;
+    flex-direction: column;
+}
+
+ul {
+    text-align: center;
+    
+}

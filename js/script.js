@@ -2,18 +2,11 @@ var pergunta = prompt(`Você deseja fazer uma lista de compras?
                 Responda: 
                 1) Sim; ou
                 2) Não.`);
-const categorias = [`frutas`,
-    `laticinios`,
-    `congelados`,
-    `doces`,
-    `outros`];
-
-let frutas = [];
-let laticinios = [];
-let congelados = [];
-let doces = [];
-let outros = [];
-
+const categorias = [[`frutas`],
+[`laticinios`],
+[`congelados`],
+[`doces`],
+[`outros`]];
 
 if (pergunta == '1' || pergunta == 'sim') {
     perguntaAlimento();
@@ -23,23 +16,32 @@ if (pergunta == '1' || pergunta == 'sim') {
 
 function perguntaAlimento() {
     let qualAlimento = prompt('Qual alimento você deseja adicionar?');
-    let perguntaCategoria = prompt(`Em qual categoria este produto de enquadra? ${categorias}`);
+    let perguntaCategoria = prompt(`Em qual categoria este produto de enquadra? 
+                        1) frutas
+                        2) laticinios
+                        3) congelados
+                        4) doces
+                        5) outros`);
 
     switch (perguntaCategoria) {
-        case categorias[0]: frutas.push(qualAlimento);
-            console.log(frutas)
+        case `1`: categorias[0].push(qualAlimento);
+            console.table(categorias)
             break;
-        case categorias[1]: laticinios.push(qualAlimento);
-            console.log(laticinios);
+
+        case `2`: categorias[1].push(qualAlimento);
+            console.table(categorias)
             break;
-        case categorias[2]: congelados.push(qualAlimento);
-            console.log(congelados);
+
+        case `3`: categorias[2].push(qualAlimento);
+            console.table(categorias)
             break;
-        case categorias[3]: doces.push(qualAlimento);
-            console.log(doces);
+
+        case `4`: categorias[3].push(qualAlimento);
+            console.table(categorias)
             break;
-        case categorias[4]: outros.push(qualAlimento);
-            console.log(outros);
+
+        case `5`: categorias[4].push(qualAlimento);
+            console.table(categorias)
             break;
     }
 
@@ -53,8 +55,11 @@ function perguntaAlimento() {
     } else {
         alert('Sua lista está pronta.');
 
-        for(i = 0; i < categorias.length; i++) {
-        document.getElementById(categorias[i]).innerHTML = `<li>${categorias[i]}</li>`}
+        for (var i = 0; i < categorias.length; i++) {
+            for (var j = 0; j < categorias[i].length; j++) {
+                document.getElementById(categorias[i]).innerHTML = categorias[i][j];
+            }
+        }
 
         // document.getElementById('frutas').innerHTML = frutas;
         // document.getElementById('laticinios').innerHTML = laticinios;

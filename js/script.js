@@ -2,11 +2,9 @@ var pergunta = prompt(`Você deseja fazer uma lista de compras?
                 Responda: 
                 1) Sim; ou
                 2) Não.`);
-const categorias = [[`frutas`],
-[`laticinios`],
-[`congelados`],
-[`doces`],
-[`outros`]];
+const categorias = [[], [], [], [], []];
+
+const idsModificacao = [`frutas`, `laticinios`, `congelados`, `doces`, `outros`];
 
 if (pergunta == '1' || pergunta == 'sim') {
     perguntaAlimento();
@@ -24,23 +22,23 @@ function perguntaAlimento() {
                         5) outros`);
 
     switch (perguntaCategoria) {
-        case `1`: categorias[0].push(qualAlimento);
+        case `1`: categorias[0].push(`<li id="${qualAlimento}">${qualAlimento}</li>`);
             console.table(categorias)
             break;
 
-        case `2`: categorias[1].push(qualAlimento);
+        case `2`: categorias[1].push(`<li id="${qualAlimento}">${qualAlimento}</li>`);
             console.table(categorias)
             break;
 
-        case `3`: categorias[2].push(qualAlimento);
+        case `3`: categorias[2].push(`<li id="${qualAlimento}">${qualAlimento}</li>`);
             console.table(categorias)
             break;
 
-        case `4`: categorias[3].push(qualAlimento);
+        case `4`: categorias[3].push(`<li id="${qualAlimento}">${qualAlimento}</li>`);
             console.table(categorias)
             break;
 
-        case `5`: categorias[4].push(qualAlimento);
+        case `5`: categorias[4].push(`<li id="${qualAlimento}">${qualAlimento}</li>`);
             console.table(categorias)
             break;
     }
@@ -56,15 +54,32 @@ function perguntaAlimento() {
         alert('Sua lista está pronta.');
 
         for (var i = 0; i < categorias.length; i++) {
+            var conteudo = "";
             for (var j = 0; j < categorias[i].length; j++) {
-                document.getElementById(categorias[i]).innerHTML = categorias[i][j];
+                conteudo += categorias[i][j] + " ";
             }
+            document.getElementById(idsModificacao[i]).innerHTML = conteudo;
+
+            var celulas = categorias[i][j]
+
+            document.getElementById(celulas) . innerHTML = `<li id="${celulas}" style="text-decoration:line-through red; color:red;">${celulas}</li>`
         }
 
-        // document.getElementById('frutas').innerHTML = frutas;
-        // document.getElementById('laticinios').innerHTML = laticinios;
-        // document.getElementById('congelados').innerHTML = congelados;
-        // document.getElementById('doces').innerHTML = doces;
-        // document.getElementById('outros').innerHTML = outros;
+
+        // for(var i = 0; i < categorias.length; i++) {
+        //     for(var j = 0; j < categorias[i].length; j++ ) {
+        //         console.table(categorias);
+        //         document.getElementById(idsModificacao[i]). innerHTML = categorias[i][j]
+        //     }
+        // }
+
+        // for (var i = 0; i < idsModificacao.length; i++ ){
+        //     document.getElementById(idsModificacao[i]).innerHTML = categorias[i];
+        // }
     }
 }
+
+document.getElementById('laranja').addEventListener ('click', ()=> {
+    var riscarItem = document.getElementById('laranja');
+    riscarItem. innerHTML = '<li id="laranja" style="text-decoration:line-through red; color:red;">laranja</li>'
+})

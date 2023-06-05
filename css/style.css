@@ -1,10 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Work+Sans:wght@200&display=swap');
+
 * {
     margin: 0;
     padding: 0;
 }
 
 :root {
-    --bg-body: aquamarine;
+    --bg-body: #37664e;
+    --cor-titulo: #37cde0;
+    --cor-lista: #f4f4f4;   
+    --fonte-principal: 'Roboto', sans-serif;
+    --fonte-secundaria: 'Work Sans', sans-serif;
+    
 }
 
 body {
@@ -13,6 +20,7 @@ body {
 
 .conteudo {
     margin: auto 10%;
+    text-align: center;
 
 }
 
@@ -37,6 +45,51 @@ ul {
 }
 
 .riscar-item2 {
+    font-family: var(--fonte-secundaria);
+    font-size: 1.5em;
     text-decoration: line-through red;
     color: red;
 }
+.titulo-lista {
+    font-family: var(--fonte-principal);
+    color: var(--cor-titulo);
+    font-size: 1.5em;
+
+}
+
+.riscar-item{
+    font-family: var(--fonte-secundaria);
+    font-size: 1.5em;
+    color: var(--cor-lista);
+    
+}
+
+@media screen and (max-width:821px){
+    .conteudo {
+        margin: 0;
+    }
+    .lista {
+        width: 100%;
+        margin: 0;
+        justify-content: center;
+        gap: 2em;
+        font-size: 0.9em;
+    }
+}
+
+
+@media screen and (max-width:500px) {
+
+    .conteudo {
+        margin: auto;
+        
+    
+    }
+    .lista {
+        flex-direction: column;
+        gap: 4em;
+
+    }
+
+    
+} 

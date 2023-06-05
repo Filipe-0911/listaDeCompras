@@ -2,18 +2,9 @@ var pergunta = prompt(`Você deseja fazer uma lista de compras?
                 Responda: 
                 1) Sim; ou
                 2) Não.`);
-const categorias = [`frutas`,
-    `laticinios`,
-    `congelados`,
-    `doces`,
-    `outros`];
+const categorias = [[], [], [], [], []];
 
-let frutas = [];
-let laticinios = [];
-let congelados = [];
-let doces = [];
-let outros = [];
-
+const idsModificacao = [`frutas`, `laticinios`, `congelados`, `doces`, `outros`];
 
 if (pergunta == '1' || pergunta == 'sim') {
     perguntaAlimento();
@@ -23,23 +14,32 @@ if (pergunta == '1' || pergunta == 'sim') {
 
 function perguntaAlimento() {
     let qualAlimento = prompt('Qual alimento você deseja adicionar?');
-    let perguntaCategoria = prompt(`Em qual categoria este produto de enquadra? ${categorias}`);
+    let perguntaCategoria = prompt(`Em qual categoria este produto de enquadra? 
+                        1) frutas
+                        2) laticinios
+                        3) congelados
+                        4) doces
+                        5) outros`);
 
     switch (perguntaCategoria) {
-        case categorias[0]: frutas.push(qualAlimento);
-            console.log(frutas)
+        case `1`: categorias[0].push(`<li id="${qualAlimento}">${qualAlimento}</li>`);
+            console.table(categorias)
             break;
-        case categorias[1]: laticinios.push(qualAlimento);
-            console.log(laticinios);
+
+        case `2`: categorias[1].push(`<li id="${qualAlimento}">${qualAlimento}</li>`);
+            console.table(categorias)
             break;
-        case categorias[2]: congelados.push(qualAlimento);
-            console.log(congelados);
+
+        case `3`: categorias[2].push(`<li id="${qualAlimento}">${qualAlimento}</li>`);
+            console.table(categorias)
             break;
-        case categorias[3]: doces.push(qualAlimento);
-            console.log(doces);
+
+        case `4`: categorias[3].push(`<li id="${qualAlimento}">${qualAlimento}</li>`);
+            console.table(categorias)
             break;
-        case categorias[4]: outros.push(qualAlimento);
-            console.log(outros);
+
+        case `5`: categorias[4].push(`<li id="${qualAlimento}">${qualAlimento}</li>`);
+            console.table(categorias)
             break;
     }
 
@@ -53,13 +53,24 @@ function perguntaAlimento() {
     } else {
         alert('Sua lista está pronta.');
 
-        // for(i = 0; i < categorias.length; i++) {
-        //document.getElementById(categorias[i]).innerHTML = `<li>${categorias[i]}</li>`}
+        for (var i = 0; i < categorias.length; i++) {
+            var conteudo = "";
+            for (var j = 0; j < categorias[i].length; j++) {
+                conteudo += categorias[i][j] + " ";
+            }
+            document.getElementById(idsModificacao[i]).innerHTML = conteudo;
 
-        document.getElementById('frutas').innerHTML = frutas;
-        document.getElementById('laticinios').innerHTML = laticinios;
-        document.getElementById('congelados').innerHTML = congelados;
-        document.getElementById('doces').innerHTML = doces;
-        document.getElementById('outros').innerHTML = outros;
+            var celulas = categorias[i][j]
+
+            document.getElementById(celulas) . innerHTML = `<li id="${celulas}" style="text-decoration:line-through red; color:red;">${celulas}</li>`
+        }
+
+
+
     }
 }
+
+document.getElementById('laranja').addEventListener ('click', ()=> {
+    var riscarItem = document.getElementById('laranja');
+    riscarItem. innerHTML = '<li id="laranja" style="text-decoration:line-through red; color:red;">laranja</li>'
+})

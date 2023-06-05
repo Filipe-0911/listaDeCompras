@@ -62,12 +62,10 @@ function perguntaAlimento() {
 
         }
 
-
-
     }
 }
 
-document.getElementById('laranja').addEventListener ('click', ()=> {
+document.getElementById('laranja').addEventListener('click', () => {
     var riscarItem = document.getElementById('laranja');
-    riscarItem. innerHTML = '<li id="laranja" style="text-decoration:line-through red; color:red;">laranja</li>'
+    riscarItem.innerHTML = '<li id="laranja" style="text-decoration:line-through red; color:red;">laranja</li>'
 })

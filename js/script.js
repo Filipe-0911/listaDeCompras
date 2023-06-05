@@ -60,9 +60,6 @@ function perguntaAlimento() {
             }
             document.getElementById(idsModificacao[i]).innerHTML = conteudo;
 
-            var celulas = categorias[i][j]
-
-            document.getElementById(celulas) . innerHTML = `<li id="${celulas}" style="text-decoration:line-through red; color:red;">${celulas}</li>`
         }
 
 

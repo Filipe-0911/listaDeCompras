@@ -6,6 +6,8 @@ const categorias = [[], [], [], [], []];
 
 const idsModificacao = [`frutas`, `laticinios`, `congelados`, `doces`, `outros`];
 
+let qualAlimento;
+
 if (pergunta == '1' || pergunta == 'sim') {
     perguntaAlimento();
 } else {
@@ -22,23 +24,23 @@ function perguntaAlimento() {
                         5) outros`);
 
     switch (perguntaCategoria) {
-        case `1`: categorias[0].push(`<li id="${qualAlimento}">${qualAlimento}</li>`);
+        case `1`: categorias[0].push(`<li id="riscar-item" class="riscar-item">${qualAlimento}</li>`);
             console.table(categorias)
             break;
 
-        case `2`: categorias[1].push(`<li id="${qualAlimento}">${qualAlimento}</li>`);
+        case `2`: categorias[1].push(`<li id="riscar-item" class="riscar-item">${qualAlimento}</li>`);
             console.table(categorias)
             break;
 
-        case `3`: categorias[2].push(`<li id="${qualAlimento}">${qualAlimento}</li>`);
+        case `3`: categorias[2].push(`<li id="riscar-item" class="riscar-item">${qualAlimento}</li>`);
             console.table(categorias)
             break;
 
-        case `4`: categorias[3].push(`<li id="${qualAlimento}">${qualAlimento}</li>`);
+        case `4`: categorias[3].push(`<li id="riscar-item" class="riscar-item">${qualAlimento}</li>`);
             console.table(categorias)
             break;
 
-        case `5`: categorias[4].push(`<li id="${qualAlimento}">${qualAlimento}</li>`);
+        case `5`: categorias[4].push(`<li id="riscar-item" class="riscar-item">${qualAlimento}</li>`);
             console.table(categorias)
             break;
     }
@@ -60,12 +62,22 @@ function perguntaAlimento() {
             }
             document.getElementById(idsModificacao[i]).innerHTML = conteudo;
 
+
+
         }
 
     }
 }
 
-document.getElementById('laranja').addEventListener('click', () => {
-    var riscarItem = document.getElementById('laranja');
-    riscarItem.innerHTML = '<li id="laranja" style="text-decoration:line-through red; color:red;">laranja</li>'
-})
+const tabela = document.getElementsByClassName('riscar-item');
+
+for (i = 0; i < tabela.length; i++) {
+    console.log(tabela[i]);
+    tabela[i].addEventListener('click',() => {
+        tabela[i].innerHTML = 'oi';
+    })
+}
+
+//`<li id="${qualAlimento}" class="riscar-item2">${qualAlimento}</li>`
+
+

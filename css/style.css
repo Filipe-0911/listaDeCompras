@@ -6,18 +6,26 @@
 :root {
     --bg-body: aquamarine;
 }
+
 body {
     background-color: var(--bg-body)
 }
+
 .conteudo {
     margin: auto 10%;
-    
+
 }
+
 .lista {
     display: flex;
     justify-content: space-between;
 }
-.frutas, .laticinios, .congelados, .doces, .outros {
+
+.frutas,
+.laticinios,
+.congelados,
+.doces,
+.outros {
     display: flex;
     flex-direction: column;
 }
@@ -25,5 +33,10 @@ body {
 ul {
     text-align: center;
     list-style: none;
-    
+
+}
+
+.riscar-item2 {
+    text-decoration: line-through red;
+    color: red;
 }

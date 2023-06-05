@@ -4,6 +4,8 @@ var pergunta = prompt(`Você deseja fazer uma lista de compras?
                 2) Não.`);
 const categorias = [[], [], [], [], []];
 
+const riscaItem = [[], [], [], [], []];
+
 const idsModificacao = [`frutas`, `laticinios`, `congelados`, `doces`, `outros`];
 
 let qualAlimento;
@@ -24,23 +26,28 @@ function perguntaAlimento() {
                         5) outros`);
 
     switch (perguntaCategoria) {
-        case `1`: categorias[0].push(`<li id="riscar-item" class="riscar-item">${qualAlimento}</li>`);
-            console.table(categorias)
+        case `1`: categorias[0].push(`<li id="${qualAlimento}" class="riscar-item">${qualAlimento}</li>`);
+            riscaItem[0].push(qualAlimento);
+            console.table(categorias);
             break;
 
-        case `2`: categorias[1].push(`<li id="riscar-item" class="riscar-item">${qualAlimento}</li>`);
-            console.table(categorias)
+        case `2`: categorias[1].push(`<li id="${qualAlimento}" class="riscar-item">${qualAlimento}</li>`);
+            riscaItem[1].push(qualAlimento);
+            console.table(categorias);
             break;
 
-        case `3`: categorias[2].push(`<li id="riscar-item" class="riscar-item">${qualAlimento}</li>`);
-            console.table(categorias)
+        case `3`: categorias[2].push(`<li id="${qualAlimento}" class="riscar-item">${qualAlimento}</li>`);
+            riscaItem[2].push(qualAlimento);
+            console.table(categorias);
             break;
 
-        case `4`: categorias[3].push(`<li id="riscar-item" class="riscar-item">${qualAlimento}</li>`);
-            console.table(categorias)
+        case `4`: categorias[3].push(`<li id="${qualAlimento}" class="riscar-item">${qualAlimento}</li>`);
+            riscaItem[3].push(qualAlimento);
+            console.table(categorias);
             break;
 
-        case `5`: categorias[4].push(`<li id="riscar-item" class="riscar-item">${qualAlimento}</li>`);
+        case `5`: categorias[4].push(`<li id="${qualAlimento}" class="riscar-item">${qualAlimento}</li>`);
+            riscaItem[4].push(qualAlimento);
             console.table(categorias)
             break;
     }
@@ -61,23 +68,20 @@ function perguntaAlimento() {
                 conteudo += categorias[i][j] + " ";
             }
             document.getElementById(idsModificacao[i]).innerHTML = conteudo;
-
-
-
         }
 
     }
 }
 
-const tabela = document.getElementsByClassName('riscar-item');
-
-for (i = 0; i < tabela.length; i++) {
-    console.log(tabela[i]);
-    tabela[i].addEventListener('click',() => {
-        tabela[i].innerHTML = 'oi';
-    })
+for (var i = 0; i < riscaItem.length; i++) {
+    for (var j = 0; j < riscaItem[i].length; j++) {
+        var item = riscaItem[i][j];
+        document.getElementById(item).addEventListener('click', createClickHandler(item));
+    }     
 }
 
-//`<li id="${qualAlimento}" class="riscar-item2">${qualAlimento}</li>`
-
-
+function createClickHandler(item) {
+    return function() {
+        document.getElementById(item).className = 'riscar-item2';
+    };
+}

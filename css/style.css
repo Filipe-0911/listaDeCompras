@@ -14,11 +14,13 @@
     --fonte-secundaria: 'Work Sans', sans-serif;
 
 }
+
 .cabecalho {
     display: flex;
     justify-content: center;
     margin: auto 10%;
 }
+
 .titulo {
 
     margin: 1em 5em 1em 0;
@@ -27,8 +29,8 @@
 .lista-de-compras {
     display: flex;
     justify-content: center;
-    align-items:flex-start;
-    
+    align-items: flex-start;
+
 }
 
 body {
@@ -52,7 +54,8 @@ body {
 .laticinios,
 .congelados,
 .doces,
-.outros,.titulo {
+.outros,
+.titulo {
     display: flex;
     flex-direction: column;
     border: 1px solid black;
@@ -91,7 +94,12 @@ ul {
     color: red;
 }
 
-.titulo-lista, .titulo-texto {
+.titulo-frutas,
+.titulo-laticinios,
+.titulo-congelados,
+.titulo-guloseimas,
+.titulo-outros,
+.titulo-texto {
     font-family: var(--fonte-principal);
     color: var(--cor-titulo);
     font-size: 1.5em;
@@ -105,7 +113,7 @@ ul {
 
 }
 
-.rodape{
+.rodape {
     text-align: center;
     font-family: var(--fonte-secundaria);
     font-size: 1.5em;
@@ -118,6 +126,7 @@ ul {
     .conteudo {
         margin: 0;
     }
+
     .titulo {
 
         margin: 0;
@@ -154,6 +163,7 @@ ul {
     .outros:hover {
         background-color: var(--bg-body);
     }
+
     .rodape {
         display: block;
     }

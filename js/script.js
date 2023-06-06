@@ -76,18 +76,18 @@ function perguntaAlimento() {
 for (var i = 0; i < riscaItem.length; i++) {
     for (var j = 0; j < riscaItem[i].length; j++) {
         var item = riscaItem[i][j];
-        document.getElementById(item).addEventListener('click', createClickHandler(item));
-        document.getElementById(item).addEventListener('dblclick', createClickHandler2(item));
+        document.getElementById(item).addEventListener('click', adicionaRiscoVermelho(item));
+        document.getElementById(item).addEventListener('dblclick', adicionaRiscoVermelho2(item));
     }     
 }
 
-function createClickHandler(item) {
+function adicionaRiscoVermelho(item) {
     return function() {
         document.getElementById(item).className = 'riscar-item2';
     };
 }
 
-function createClickHandler2(item) {
+function adicionaRiscoVermelho2(item) {
     return function() {
         document.getElementById(item).className = 'riscar-item';
     };

@@ -7,10 +7,27 @@
 
 :root {
     --bg-body: #37664e;
+    --listas-hover: #344e41;
     --cor-titulo: #37cde0;
-    --cor-lista: #f4f4f4;   
+    --cor-lista: #f4f4f4;
     --fonte-principal: 'Roboto', sans-serif;
     --fonte-secundaria: 'Work Sans', sans-serif;
+
+}
+.cabecalho {
+    display: flex;
+    justify-content: center;
+    margin: auto 10%;
+}
+.titulo {
+
+    margin: 1em 5em 1em 0;
+}
+
+.lista-de-compras {
+    display: flex;
+    justify-content: center;
+    align-items:flex-start;
     
 }
 
@@ -27,22 +44,37 @@ body {
 .lista {
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    text-align: center;
 }
 
 .frutas,
 .laticinios,
 .congelados,
 .doces,
-.outros {
+.outros,.titulo {
     display: flex;
     flex-direction: column;
-    
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 1em;
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.7);
+
 }
+
+.frutas:hover,
+.laticinios:hover,
+.congelados:hover,
+.doces:hover,
+.outros:hover {
+    background-color: var(--listas-hover);
+}
+
 #frutas,
 #laticinios,
 #congelados,
 #doces,
-#outros{
+#outros {
     cursor: pointer;
 }
 
@@ -58,27 +90,42 @@ ul {
     text-decoration: line-through red;
     color: red;
 }
-.titulo-lista {
+
+.titulo-lista, .titulo-texto {
     font-family: var(--fonte-principal);
     color: var(--cor-titulo);
     font-size: 1.5em;
 
 }
 
-.riscar-item{
+.riscar-item {
     font-family: var(--fonte-secundaria);
     font-size: 1.5em;
     color: var(--cor-lista);
-    
+
 }
 
-@media screen and (max-width:821px){
+.rodape{
+    text-align: center;
+    font-family: var(--fonte-secundaria);
+    font-size: 1.5em;
+    color: var(--cor-lista);
+    padding: 3em;
+    display: none;
+}
+
+@media screen and (max-width:821px) {
     .conteudo {
         margin: 0;
     }
+    .titulo {
+
+        margin: 0;
+    }
+
     .lista {
         width: 100%;
-        margin: 0;
+        margin: 2.5em;
         justify-content: center;
         gap: 2em;
         font-size: 0.9em;
@@ -90,14 +137,25 @@ ul {
 
     .conteudo {
         margin: auto;
-        
-    
+
+
     }
+
     .lista {
         flex-direction: column;
         gap: 4em;
 
     }
 
-    
-} 
+    .frutas:hover,
+    .laticinios:hover,
+    .congelados:hover,
+    .doces:hover,
+    .outros:hover {
+        background-color: var(--bg-body);
+    }
+    .rodape {
+        display: block;
+    }
+
+}

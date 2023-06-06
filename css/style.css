@@ -36,6 +36,14 @@ body {
 .outros {
     display: flex;
     flex-direction: column;
+    
+}
+#frutas,
+#laticinios,
+#congelados,
+#doces,
+#outros{
+    cursor: pointer;
 }
 
 ul {

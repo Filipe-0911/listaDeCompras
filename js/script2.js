@@ -186,6 +186,3 @@ document.querySelector(`.titulo-outros`).addEventListener(`click`, function marc
         };
     }
 }
-
-
-

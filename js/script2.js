@@ -37,7 +37,7 @@ document.querySelector(`.titulo-frutas`).addEventListener(`click`, function marc
             }
             document.getElementById(idsModificacao[i]).innerHTML = conteudo;
         }
-
+        riscarItem();
     }
 });
 
@@ -68,7 +68,7 @@ document.querySelector(`.titulo-laticinios`).addEventListener(`click`, function 
             }
             document.getElementById(idsModificacao[i]).innerHTML = conteudo;
         }
-
+        riscarItem();
     }
 });
 
@@ -100,7 +100,7 @@ document.querySelector(`.titulo-congelados`).addEventListener(`click`, function 
             }
             document.getElementById(idsModificacao[i]).innerHTML = conteudo;
         }
-
+        riscarItem();
     }
 });
 document.querySelector(`.titulo-guloseimas`).addEventListener(`click`, function marcarProdutos3() {
@@ -130,7 +130,7 @@ document.querySelector(`.titulo-guloseimas`).addEventListener(`click`, function 
             }
             document.getElementById(idsModificacao[i]).innerHTML = conteudo;
         }
-
+        riscarItem();
     }
 });
 document.querySelector(`.titulo-outros`).addEventListener(`click`, function marcarProdutos4() {
@@ -159,27 +159,33 @@ document.querySelector(`.titulo-outros`).addEventListener(`click`, function marc
                 conteudo += categorias[i][j] + " ";
             }
             document.getElementById(idsModificacao[i]).innerHTML = conteudo;
+            
         }
-
+        riscarItem();
     }
 });
 
-for (var i = 0; i < riscaItem.length; i++) {
-    for (var j = 0; j < riscaItem[i].length; j++) {
-        var item = riscaItem[i][j];
-        document.getElementById(item).addEventListener('click', adicionaRiscoVermelho(item));
-        document.getElementById(item).addEventListener('dblclick', adicionaRiscoVermelho2(item));
+ const riscarItem = () => {
+    for (var i = 0; i < riscaItem.length; i++) {
+        for (var j = 0; j < riscaItem[i].length; j++) {
+            var item = riscaItem[i][j];
+            document.getElementById(item).addEventListener('click', adicionaRiscoVermelho(item));
+            document.getElementById(item).addEventListener('dblclick', adicionaRiscoVermelho2(item));
+        }
+    }
+    
+    function adicionaRiscoVermelho(item) {
+        return function () {
+            document.getElementById(item).className = 'riscar-item2';
+        };
+    }
+    
+    function adicionaRiscoVermelho2(item) {
+        return function () {
+            document.getElementById(item).className = 'riscar-item';
+        };
     }
 }
 
-function adicionaRiscoVermelho(item) {
-    return function () {
-        document.getElementById(item).className = 'riscar-item2';
-    };
-}
 
-function adicionaRiscoVermelho2(item) {
-    return function () {
-        document.getElementById(item).className = 'riscar-item';
-    };
-}
+

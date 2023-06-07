@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Work+Sans:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,700;1,400&family=Work+Sans:wght@300&display=swap');
 
 * {
     margin: 0;
@@ -6,9 +6,10 @@
 }
 
 :root {
-    --bg-body: #37664e;
+    --bg-body: #7ba18e;
+    --bg-listas: #37664e;
     --listas-hover: #344e41;
-    --cor-titulo: #37cde0;
+    --cor-titulo: #65bac5;
     --cor-lista: #f4f4f4;
     --fonte-principal: 'Roboto', sans-serif;
     --fonte-secundaria: 'Work Sans', sans-serif;
@@ -57,6 +58,7 @@ body {
 .outros,
 .titulo {
     display: flex;
+    background-color: var(--bg-listas);
     flex-direction: column;
     border: 1px solid black;
     border-radius: 20px;
@@ -89,6 +91,7 @@ ul {
 
 .riscar-item2 {
     font-family: var(--fonte-secundaria);
+    font-weight: 400;
     font-size: 1.5em;
     text-decoration: line-through red;
     color: red;
@@ -103,6 +106,7 @@ ul {
     font-family: var(--fonte-principal);
     color: var(--cor-titulo);
     font-size: 1.5em;
+    font-weight: 700;
 
 }
 
@@ -120,6 +124,7 @@ ul {
     color: var(--cor-lista);
     padding: 3em;
     display: none;
+    font-weight: 300;
 }
 
 @media screen and (max-width:821px) {

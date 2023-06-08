@@ -15,23 +15,29 @@
     --fonte-secundaria: 'Work Sans', sans-serif;
 
 }
-
+li {
+    text-align: left;
+    margin: 0.5em 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid var(--bg-listas);
+}
+li:hover {
+    background-color: var(--listas-hover);
+    border: 1px solid var(--listas-hover);
+    border-radius: 13px;
+}
 .cabecalho {
     display: flex;
     justify-content: center;
     margin: auto 10%;
+    margin-bottom: 2em;
 }
 
 .titulo {
 
-    margin: 1em 5em 1em 0;
-}
-
-.lista-de-compras {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-
+    margin: 1em 5em;
 }
 
 body {
@@ -39,7 +45,7 @@ body {
 }
 
 .conteudo {
-    margin: auto 10%;
+    margin: auto;
     text-align: center;
 
 }
@@ -47,7 +53,6 @@ body {
 .lista {
     display: flex;
     justify-content: space-between;
-    width: 100%;
     text-align: center;
 }
 
@@ -64,15 +69,15 @@ body {
     border-radius: 20px;
     padding: 1em;
     box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.7);
-
+    
 }
-
-.frutas:hover,
-.laticinios:hover,
-.congelados:hover,
-.doces:hover,
-.outros:hover {
-    background-color: var(--listas-hover);
+.frutas,
+.laticinios,
+.congelados,
+.doces,
+.outros {
+    width: 15em;
+    
 }
 
 #frutas,
@@ -89,12 +94,21 @@ ul {
 
 }
 
+img {
+    width: 8%;
+}
+
 .riscar-item2 {
     font-family: var(--fonte-secundaria);
-    font-weight: 400;
-    font-size: 1.5em;
     text-decoration: line-through red;
     color: red;
+    font-size: 1em;
+}
+.riscar-item {
+    font-family: var(--fonte-secundaria);
+    color: var(--cor-lista);
+    font-size: 1em;
+
 }
 
 .titulo-frutas,
@@ -110,13 +124,6 @@ ul {
 
 }
 
-.riscar-item {
-    font-family: var(--fonte-secundaria);
-    font-size: 1.5em;
-    color: var(--cor-lista);
-
-}
-
 .rodape {
     text-align: center;
     font-family: var(--fonte-secundaria);
@@ -127,7 +134,7 @@ ul {
     font-weight: 300;
 }
 
-@media screen and (max-width:821px) {
+@media screen and (max-width:1500px) {
     .conteudo {
         margin: 0;
     }
@@ -138,12 +145,45 @@ ul {
     }
 
     .lista {
-        width: 100%;
+        
         margin: 2.5em;
-        justify-content: center;
+        justify-content: space-between;
+        align-items: center;
         gap: 2em;
         font-size: 0.9em;
     }
+}
+
+@media screen and (max-width:1000px) {
+
+    .cabecalho {
+        margin-top: 1em;
+    }
+
+    .conteudo {
+        margin: 0 5em;
+
+
+    }
+
+    .lista {
+        flex-direction: column;
+        gap: 4em;
+
+    }
+
+    .frutas,
+    .laticinios,
+    .congelados,
+    .doces,
+    .outros {
+        margin: 0 10em;
+    }
+
+    .rodape {
+        display: block;
+    }
+
 }
 
 
@@ -165,12 +205,12 @@ ul {
 
     }
 
-    .frutas:hover,
-    .laticinios:hover,
-    .congelados:hover,
-    .doces:hover,
-    .outros:hover {
-        background-color: var(--bg-body);
+    .frutas,
+    .laticinios,
+    .congelados,
+    .doces,
+    .outros {
+        margin: 0;
     }
 
     .rodape {

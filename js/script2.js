@@ -20,7 +20,6 @@ document.querySelector(`.titulo-frutas`).addEventListener(`click`, function marc
     if (qualAlimento) {
         categorias[0].push(`<li id="${qualAlimento}" class="riscar-item">${qualAlimento}${imagemRemover}</li>`);
         riscaItem[0].push(qualAlimento);
-        console.table(categorias);
         document.getElementById(`frutas`).innerHTML = categorias[0];
     }
 
@@ -51,7 +50,6 @@ document.querySelector(`.titulo-laticinios`).addEventListener(`click`, function 
     if (qualAlimento) {
         categorias[1].push(`<li id="${qualAlimento}" class="riscar-item">${qualAlimento}${imagemRemover}</li>`);
         riscaItem[1].push(qualAlimento);
-        console.table(categorias);
         document.getElementById(`frutas`).innerHTML = categorias[1];
     }
 
@@ -83,7 +81,6 @@ document.querySelector(`.titulo-congelados`).addEventListener(`click`, function 
     if (qualAlimento) {
         categorias[2].push(`<li id="${qualAlimento}" class="riscar-item">${qualAlimento}${imagemRemover}</li>`);
         riscaItem[2].push(qualAlimento);
-        console.table(categorias);
         document.getElementById(`frutas`).innerHTML = categorias[2];
     }
 
@@ -113,7 +110,6 @@ document.querySelector(`.titulo-guloseimas`).addEventListener(`click`, function 
     if (qualAlimento) {
         categorias[3].push(`<li id="${qualAlimento}" class="riscar-item">${qualAlimento}${imagemRemover}</li>`);
         riscaItem[3].push(qualAlimento);
-        console.table(categorias);
         document.getElementById(`frutas`).innerHTML = categorias[3];
     }
 
@@ -143,7 +139,6 @@ document.querySelector(`.titulo-outros`).addEventListener(`click`, function marc
     if (qualAlimento) {
         categorias[4].push(`<li id="${qualAlimento}" class="riscar-item">${qualAlimento}${imagemRemover}</li>`);
         riscaItem[4].push(qualAlimento);
-        console.table(categorias);
         document.getElementById(`frutas`).innerHTML = categorias[4];
     }
 
@@ -191,10 +186,13 @@ const riscarItem = () => {
     }
 }
 
+var removerItem = (elementoClicado) => {
+    var click = document.querySelectorAll('#imagemRemover');
 
-function removerItem() {
-    console.log(`clicou`);
-    document.getElementById(`laranja`).innerHTML = null;
-    categorias[0].splice(0,1);
-    riscaItem[0].splice(0,1);
+    click[0].addEventListener('click', (evento) => {
+        var elementoClicado = evento.target;
+        console.log(elementoClicado);
+        elementoClicado.innerHTML = " ";
+    })
 }
+

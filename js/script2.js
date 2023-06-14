@@ -4,26 +4,26 @@ const riscaItem = [[], [], [], [], []];
 
 const idsModificacao = [`frutas`, `laticinios`, `congelados`, `doces`, `outros`];
 
-const imagemRemover = `<img onclick="removerItem()" id="imagemRemover" src="img/remover.png" alt="remove">`
-
 let qualAlimento;
 
 document.querySelector(`.titulo-texto`).addEventListener(`click`, () => {
     alert(`Para adicionar produtos em sua lista, clique no titulo de cada seção.`);
 });
+
 document.querySelector(`.titulo-frutas`).addEventListener(`click`, function marcarProdutos() {
     let qualAlimento = prompt('Qual produto você deseja adicionar?');
 
     if (qualAlimento) {
-        categorias[0].push(`<li id="${qualAlimento}" class="riscar-item">${qualAlimento}${imagemRemover}</li>`);
+        categorias[0].push(`<li id="${qualAlimento}" class="riscar-item">${qualAlimento}</li>`);
         riscaItem[0].push(qualAlimento);
+        console.table(categorias);
         document.getElementById(`frutas`).innerHTML = categorias[0];
     }
 
     var pergunta = prompt(`Deseja adicionar mais algum produto?
-                Responda 
-                1) Sim;
-                2) Não.`);
+            Responda 
+            1) Sim;
+            2) Não.`);
 
     if (pergunta == '1' || pergunta == 'sim') {
         marcarProdutos();
@@ -45,8 +45,9 @@ document.querySelector(`.titulo-laticinios`).addEventListener(`click`, function 
     let qualAlimento = prompt('Qual produto você deseja adicionar?');
 
     if (qualAlimento) {
-        categorias[1].push(`<li id="${qualAlimento}" class="riscar-item">${qualAlimento}${imagemRemover}</li>`);
+        categorias[1].push(`<li id="${qualAlimento}" class="riscar-item">${qualAlimento}</li>`);
         riscaItem[1].push(qualAlimento);
+        console.table(categorias);
         document.getElementById(`frutas`).innerHTML = categorias[1];
     }
 
@@ -76,8 +77,9 @@ document.querySelector(`.titulo-congelados`).addEventListener(`click`, function 
     let qualAlimento = prompt('Qual produto você deseja adicionar?');
 
     if (qualAlimento) {
-        categorias[2].push(`<li id="${qualAlimento}" class="riscar-item">${qualAlimento}${imagemRemover}</li>`);
+        categorias[2].push(`<li id="${qualAlimento}" class="riscar-item">${qualAlimento}</li>`);
         riscaItem[2].push(qualAlimento);
+        console.table(categorias);
         document.getElementById(`frutas`).innerHTML = categorias[2];
     }
 
@@ -105,8 +107,9 @@ document.querySelector(`.titulo-guloseimas`).addEventListener(`click`, function 
     let qualAlimento = prompt('Qual produto você deseja adicionar?');
 
     if (qualAlimento) {
-        categorias[3].push(`<li id="${qualAlimento}" class="riscar-item">${qualAlimento}${imagemRemover}</li>`);
+        categorias[3].push(`<li id="${qualAlimento}" class="riscar-item">${qualAlimento}</li>`);
         riscaItem[3].push(qualAlimento);
+        console.table(categorias);
         document.getElementById(`frutas`).innerHTML = categorias[3];
     }
 
@@ -134,8 +137,9 @@ document.querySelector(`.titulo-outros`).addEventListener(`click`, function marc
     let qualAlimento = prompt('Qual produto você deseja adicionar?');
 
     if (qualAlimento) {
-        categorias[4].push(`<li id="${qualAlimento}" class="riscar-item">${qualAlimento}${imagemRemover}</li>`);
+        categorias[4].push(`<li id="${qualAlimento}" class="riscar-item">${qualAlimento}</li>`);
         riscaItem[4].push(qualAlimento);
+        console.table(categorias);
         document.getElementById(`frutas`).innerHTML = categorias[4];
     }
 
@@ -155,41 +159,30 @@ document.querySelector(`.titulo-outros`).addEventListener(`click`, function marc
                 conteudo += categorias[i][j] + " ";
             }
             document.getElementById(idsModificacao[i]).innerHTML = conteudo;
-
+            
         }
         riscarItem();
     }
 });
 
-const riscarItem = () => {
+ const riscarItem = () => {
     for (var i = 0; i < riscaItem.length; i++) {
         for (var j = 0; j < riscaItem[i].length; j++) {
             var item = riscaItem[i][j];
             document.getElementById(item).addEventListener('click', adicionaRiscoVermelho(item));
-            document.getElementById(item).addEventListener('dblclick', removeRiscoVermelho(item));
+            document.getElementById(item).addEventListener('dblclick', adicionaRiscoVermelho2(item));
         }
     }
-
+    
     function adicionaRiscoVermelho(item) {
         return function () {
             document.getElementById(item).className = 'riscar-item2';
         };
     }
-
-    function removeRiscoVermelho(item) {
+    
+    function adicionaRiscoVermelho2(item) {
         return function () {
             document.getElementById(item).className = 'riscar-item';
         };
     }
 }
-
-var removerItem = (elementoClicado) => {
-    var click = document.querySelectorAll('#imagemRemover');
-
-    click[0].addEventListener('click', (evento) => {
-        var elementoClicado = evento.target;
-        console.log(elementoClicado);
-        elementoClicado.innerHTML = " ";
-    })
-}
-

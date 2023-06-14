@@ -4,12 +4,9 @@ const riscaItem = [[], [], [], [], []];
 
 const idsModificacao = [`frutas`, `laticinios`, `congelados`, `doces`, `outros`];
 
-
-
 const imagemRemover = `<img onclick="removerItem()" id="imagemRemover" src="img/remover.png" alt="remove">`
 
 let qualAlimento;
-
 
 document.querySelector(`.titulo-texto`).addEventListener(`click`, () => {
     alert(`Para adicionar produtos em sua lista, clique no titulo de cada seção.`);

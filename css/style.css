@@ -121,6 +121,7 @@ img {
     color: var(--cor-titulo);
     font-size: 1.5em;
     font-weight: 700;
+    cursor: pointer;
 
 }
 
@@ -132,6 +133,27 @@ img {
     padding: 3em;
     display: none;
     font-weight: 300;
+}
+.input-text{
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    
+}
+.botao{
+    background-color: var(--cor-titulo);
+    width: 100%;
+    color: var(--cor-lista);
+    border: 1px solid var(--cor-titulo);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.botao:hover{
+    background-color: #4a858d;
+    color: black;
+    border: 1px solid #4a858d;
 }
 
 @media screen and (max-width:1500px) {

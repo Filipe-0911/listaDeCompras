@@ -1,3 +1,6 @@
+alert(`Seja bem vindo ao sistema Lista de Compras! 
+Para utilizar, dê dois cliques nos titulos de cada seção, adicione os elementos no campo de texto e clique em enviar.`)
+alert(`Para remover o campo de inserção de itens, clique uma vez nos títulos.`);
 const categorias = document.querySelectorAll('[data-id]');
 
 const localLista = document.querySelectorAll('[data-lista]');
@@ -11,9 +14,11 @@ var lista = {
 };
 
 categorias.forEach((elemento)=>{
-    elemento.addEventListener(`click`, (evento)=>{
+    elemento.addEventListener(`dblclick`, (evento) => {
         selecionaLista(evento.target.innerHTML, evento.target.parentNode)
-        
+    })
+    elemento.addEventListener('click', (evento) => {
+        removeInput(evento.target.parentNode);
     })
 })
 
@@ -59,9 +64,30 @@ function adicionaItemLista(botao, atributoDoObjeto, div) {
     botao.forEach((elemento) => {
         elemento.addEventListener('click', () => {
             var itemInserido = div.querySelector(`.input-text`).value;
-            console.log(atributoDoObjeto)
-            lista[atributoDoObjeto].push(itemInserido);
-            console.table(lista)
+            if(itemInserido) {
+                lista[atributoDoObjeto].push(itemInserido);
+                console.table(lista);
+                div.querySelector(`.input-text`).value = "";
+                insereNoHtml(lista[atributoDoObjeto], div);
+            }
+            
         })
     })
+}
+
+function insereNoHtml (preenchido, div) {
+    if(preenchido) {
+        const li = document.createElement('li');
+        li.classList.add('riscar-item');
+        li.innerHTML = preenchido;
+
+        var ul = div.querySelector('[data-lista]');
+
+        ul.appendChild(li);
+    }
+}
+
+function removeInput (div) {
+    var teste = div.querySelector('[data-input]');
+    teste.innerHTML = "";
 }

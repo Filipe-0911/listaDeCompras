@@ -1,10 +1,12 @@
 const categorias = document.querySelectorAll('[data-id]');
 
+const localLista = document.querySelectorAll('[data-lista]');
+
 var lista = {
     frutas: [],
     laticinios: [],
     congelados: [],
-    guloseimas: [],
+    doces: [],
     outros: []
 };
 
@@ -40,6 +42,7 @@ function adicionaInput (item) {
 
     const novoBotao = document.createElement(`input`);
     novoBotao.classList.add(`botao`);
+    novoBotao.dataset.botao = `botao`;
     novoBotao.type = `submit`;
     
 
@@ -47,19 +50,27 @@ function adicionaInput (item) {
     listaInput.appendChild(novoBotao);
 
 
-    const selecionaBotao = document.querySelector(`.botao`);    
-    var itemInserido = document.querySelector(`.input-text`).value;
+    const selecionaBotao = document.querySelectorAll(`[data-botao]`);    
+    
+    //console.log(item.parentNode.className);
 
-    adicionaItemLista(itemInserido, selecionaBotao, item);
+    adicionaItemLista(selecionaBotao, item.parentNode.className, item.parentNode);
 
 }
 
-function adicionaItemLista(itemDaLista, botao, e){
-    botao.addEventListener(`submit`, () => {
-        console.log(itemDaLista);
-        //console.log(e);
-        
+function adicionaItemLista(botao, atributoDoObjeto, div) {
+    
+    botao.forEach((elemento) => {
+        elemento.addEventListener('click', () => {
+            var itemInserido = div.querySelector(`.input-text`).value;
+            console.log(atributoDoObjeto)
+            lista[atributoDoObjeto].push(itemInserido);
+            console.table(lista)
+        })
     })
+    
+
+
 }
 
 // falta adicionar item no objeto, puxar do objeto para o html, inserir no localStorage e adicionar possibilidade de remoção e marcar em vermelho

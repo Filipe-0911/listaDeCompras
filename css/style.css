@@ -140,6 +140,7 @@ img {
     border-radius: 10px;
     text-align: center;
     
+    
 }
 .botao{
     background-color: var(--cor-titulo);
@@ -148,6 +149,7 @@ img {
     border: 1px solid var(--cor-titulo);
     border-radius: 10px;
     cursor: pointer;
+    
 }
 
 .botao:hover{

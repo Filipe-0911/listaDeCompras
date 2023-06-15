@@ -45,14 +45,10 @@ function adicionaInput (item) {
     novoBotao.dataset.botao = `botao`;
     novoBotao.type = `submit`;
     
-
     listaInput.appendChild(novoInput);
     listaInput.appendChild(novoBotao);
 
-
     const selecionaBotao = document.querySelectorAll(`[data-botao]`);    
-    
-    //console.log(item.parentNode.className);
 
     adicionaItemLista(selecionaBotao, item.parentNode.className, item.parentNode);
 
@@ -68,9 +64,4 @@ function adicionaItemLista(botao, atributoDoObjeto, div) {
             console.table(lista)
         })
     })
-    
-
-
 }
-
-// falta adicionar item no objeto, puxar do objeto para o html, inserir no localStorage e adicionar possibilidade de remoção e marcar em vermelho

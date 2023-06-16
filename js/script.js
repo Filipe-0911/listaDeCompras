@@ -1,94 +1,149 @@
-var pergunta = prompt(`Você deseja fazer uma lista de compras?
-                Responda: 
-                1) Sim; ou
-                2) Não.`);
-const categorias = [[], [], [], [], []];
+const categorias = document.querySelectorAll('[data-id]');
 
-const riscaItem = [[], [], [], [], []];
+const localLista = document.querySelectorAll('[data-lista]');
 
-const idsModificacao = [`frutas`, `laticinios`, `congelados`, `doces`, `outros`];
+var lista = {
+    frutas: [],
+    laticinios: [],
+    congelados: [],
+    doces: [],
+    outros: []
+};
 
-let qualAlimento;
+categorias.forEach((elemento) => {
+    elemento.addEventListener(`dblclick`, (evento) => {
+        selecionaLista(evento.target.innerHTML, evento.target.parentNode)
+    })
+    elemento.addEventListener('click', (evento) => {
+        removeInput(evento.target.parentNode);
+    })
+})
 
-if (pergunta == '1' || pergunta == 'sim') {
-    perguntaAlimento();
-} else {
-    alert('Volte quando desejar fazer uma lista de compras.')
-}
-
-function perguntaAlimento() {
-    let qualAlimento = prompt('Qual alimento você deseja adicionar?');
-    let perguntaCategoria = prompt(`Em qual categoria este produto de enquadra? 
-                        1) frutas
-                        2) laticinios
-                        3) congelados
-                        4) doces
-                        5) outros`);
-
-    switch (perguntaCategoria) {
-        case `1`: categorias[0].push(`<li id="${qualAlimento}" class="riscar-item">${qualAlimento}</li>`);
-            riscaItem[0].push(qualAlimento);
-            console.table(categorias);
+function selecionaLista(itemClicado, divPrincipal) {
+    switch (itemClicado) {
+        case `Lista de Frutas`: adicionaInput(divPrincipal);
             break;
-
-        case `2`: categorias[1].push(`<li id="${qualAlimento}" class="riscar-item">${qualAlimento}</li>`);
-            riscaItem[1].push(qualAlimento);
-            console.table(categorias);
+        case `Lista de Laticinios`: adicionaInput(divPrincipal);
             break;
-
-        case `3`: categorias[2].push(`<li id="${qualAlimento}" class="riscar-item">${qualAlimento}</li>`);
-            riscaItem[2].push(qualAlimento);
-            console.table(categorias);
+        case `Lista de Congelados`: adicionaInput(divPrincipal);
             break;
-
-        case `4`: categorias[3].push(`<li id="${qualAlimento}" class="riscar-item">${qualAlimento}</li>`);
-            riscaItem[3].push(qualAlimento);
-            console.table(categorias);
+        case `Lista de Guloseimas`: adicionaInput(divPrincipal);
             break;
-
-        case `5`: categorias[4].push(`<li id="${qualAlimento}" class="riscar-item">${qualAlimento}</li>`);
-            riscaItem[4].push(qualAlimento);
-            console.table(categorias)
+        case `Lista de Outros itens`: adicionaInput(divPrincipal);
             break;
     }
 
-    var pergunta = prompt(`Deseja adicionar mais algum produto?
-            Responda 
-            1) Sim;
-            2) Não.`);
+}
 
-    if (pergunta == '1' || pergunta == 'sim') {
-        perguntaAlimento();
-    } else {
-        alert('Sua lista está pronta.');
+function adicionaInput(item) {
+    const listaInput = item.querySelector(`[data-input]`);
 
-        for (var i = 0; i < categorias.length; i++) {
-            var conteudo = "";
-            for (var j = 0; j < categorias[i].length; j++) {
-                conteudo += categorias[i][j] + " ";
+    const novoInput = document.createElement(`input`);
+    novoInput.classList.add(`input-text`);
+    novoInput.type = `text`;
+
+    const novoBotao = document.createElement(`input`);
+    novoBotao.classList.add(`botao`);
+    novoBotao.dataset.botao = `botao`;
+    novoBotao.type = `submit`;
+
+    const botaoGeraLista = document.createElement(`button`);
+    botaoGeraLista.classList.add(`botao-gera-lista`);
+    botaoGeraLista.dataset.gerar = `botao-gerar`;
+    botaoGeraLista.innerText = `Gerar Lista`;
+
+
+    listaInput.appendChild(novoInput);
+    listaInput.appendChild(novoBotao);
+    listaInput.appendChild(botaoGeraLista);
+
+    const selecionaBotaoEnviar = document.querySelectorAll(`[data-botao]`);
+    const selecionaBotaoGerar = document.querySelectorAll(`[data-gerar]`);
+
+    adicionaItemLista(selecionaBotaoEnviar, item.parentNode.className, item.parentNode, selecionaBotaoGerar);
+
+}
+
+function adicionaItemLista(botao, atributoDoObjeto, div, botaoGerar) {
+
+    botao.forEach((elemento) => {
+        elemento.addEventListener('click', () => {
+            var itemInserido = div.querySelector(`.input-text`).value;
+
+            if (itemInserido) {
+
+                const li = document.createElement(`li`);
+                li.classList.add(`riscar-item`);
+
+                const img = document.createElement(`img`)
+                img.dataset.img = `remover`;
+                img.src = `img/remover.png`
+
+                li.innerHTML = itemInserido;
+                li.dataset.item = itemInserido;
+                li.appendChild(img);
+
+                //console.log(li);
+
+                lista[atributoDoObjeto].push(li);
+                div.querySelector(`.input-text`).value = "";
+
+
+                insereNoHtml(lista[atributoDoObjeto], div, botaoGerar);
+
+            } else {
+                alert('Para enviar um item para a lista, insira-o no espaço em branco e clique em enviar.')
             }
-            document.getElementById(idsModificacao[i]).innerHTML = conteudo;
-        }
-
-    }
+        })
+    })
 }
 
-for (var i = 0; i < riscaItem.length; i++) {
-    for (var j = 0; j < riscaItem[i].length; j++) {
-        var item = riscaItem[i][j];
-        document.getElementById(item).addEventListener('click', adicionaRiscoVermelho(item));
-        document.getElementById(item).addEventListener('dblclick', adicionaRiscoVermelho2(item));
-    }     
+function insereNoHtml(listaDeProdutos, div, botaoGerar) {
+
+    botaoGerar.forEach((elemento) => {
+        elemento.addEventListener(`click`, () => {
+
+            removeItem(div);
+
+            var inserirNoHtml = div.querySelector(`[data-lista]`);
+
+            for (i = 0; i < listaDeProdutos.length; i++) {
+                inserirNoHtml.appendChild(listaDeProdutos[i]);
+
+            }
+        })
+    })
 }
 
-function adicionaRiscoVermelho(item) {
-    return function() {
-        document.getElementById(item).className = 'riscar-item2';
-    };
+function removeInput(div) {
+    var teste = div.querySelector('[data-input]');
+    teste.innerHTML = "";
 }
 
-function adicionaRiscoVermelho2(item) {
-    return function() {
-        document.getElementById(item).className = 'riscar-item';
-    };
+function removeItem(div) {
+
+    var imagem = div.querySelectorAll(`[data-img]`);
+
+    imagem.forEach((elemento) => {
+        elemento.addEventListener(`click`, () => {                
+            var imgClicada = elemento.parentNode;
+            imgClicada.remove();     
+
+            //var valorDeletaLista = imgClicada.innerText;
+
+            //console.log(valorDeletaLista);
+
+            // var buscaValorDataItem = imgClicada.parentNode;
+            // var teste = buscaValorDataItem.querySelector(`[data-item=${valorDeletaLista}]`);
+
+            
+            // const index = lista.frutas.find(frutas => frutas === teste);
+            // console.log(index)
+            
+            //for(i = 0; i < lista.length; i++) {     }
+            //console.log(buscaValorDataItem)
+            
+
+        })
+    });
 }

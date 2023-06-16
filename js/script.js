@@ -1,6 +1,3 @@
-alert(`Seja bem vindo ao sistema Lista de Compras! 
-Para utilizar, dê dois cliques nos titulos de cada seção, adicione os elementos no campo de texto e clique em enviar.`)
-alert(`Para remover o campo de inserção de itens, clique uma vez nos títulos.`);
 const categorias = document.querySelectorAll('[data-id]');
 
 const localLista = document.querySelectorAll('[data-lista]');
@@ -13,7 +10,7 @@ var lista = {
     outros: []
 };
 
-categorias.forEach((elemento)=>{
+categorias.forEach((elemento) => {
     elemento.addEventListener(`dblclick`, (evento) => {
         selecionaLista(evento.target.innerHTML, evento.target.parentNode)
     })
@@ -25,20 +22,20 @@ categorias.forEach((elemento)=>{
 function selecionaLista(itemClicado, divPrincipal) {
     switch (itemClicado) {
         case `Lista de Frutas`: adicionaInput(divPrincipal);
-        break;
+            break;
         case `Lista de Laticinios`: adicionaInput(divPrincipal);
-        break;
+            break;
         case `Lista de Congelados`: adicionaInput(divPrincipal);
-        break;
+            break;
         case `Lista de Guloseimas`: adicionaInput(divPrincipal);
-        break;
+            break;
         case `Lista de Outros itens`: adicionaInput(divPrincipal);
-        break;
+            break;
     }
 
 }
 
-function adicionaInput (item) {
+function adicionaInput(item) {
     const listaInput = item.querySelector(`[data-input]`);
 
     const novoInput = document.createElement(`input`);
@@ -49,45 +46,88 @@ function adicionaInput (item) {
     novoBotao.classList.add(`botao`);
     novoBotao.dataset.botao = `botao`;
     novoBotao.type = `submit`;
-    
+
+    const botaoGeraLista = document.createElement(`button`);
+    botaoGeraLista.classList.add(`botao-gera-lista`);
+    botaoGeraLista.dataset.gerar = `botao-gerar`;
+    botaoGeraLista.innerText = `Gerar Lista`;
+
+
     listaInput.appendChild(novoInput);
     listaInput.appendChild(novoBotao);
+    listaInput.appendChild(botaoGeraLista);
 
-    const selecionaBotao = document.querySelectorAll(`[data-botao]`);    
+    const selecionaBotaoEnviar = document.querySelectorAll(`[data-botao]`);
+    const selecionaBotaoGerar = document.querySelectorAll(`[data-gerar]`);
 
-    adicionaItemLista(selecionaBotao, item.parentNode.className, item.parentNode);
+    adicionaItemLista(selecionaBotaoEnviar, item.parentNode.className, item.parentNode, selecionaBotaoGerar);
 
 }
 
-function adicionaItemLista(botao, atributoDoObjeto, div) {
-    
+function adicionaItemLista(botao, atributoDoObjeto, div, botaoGerar) {
+
     botao.forEach((elemento) => {
         elemento.addEventListener('click', () => {
             var itemInserido = div.querySelector(`.input-text`).value;
-            if(itemInserido) {
-                lista[atributoDoObjeto].push(itemInserido);
-                console.table(lista);
+
+            if (itemInserido) {
+
+                const li = document.createElement(`li`);
+                li.classList.add(`riscar-item`);
+
+                const img = document.createElement(`img`)
+                img.dataset.img = `remover`;
+                img.src = `img/remover.png`
+
+                li.innerHTML = itemInserido;
+                li.appendChild(img);
+
+                //console.log(li);
+
+                lista[atributoDoObjeto].push(li);
                 div.querySelector(`.input-text`).value = "";
-                insereNoHtml(lista[atributoDoObjeto], div);
+
+                
+                insereNoHtml(lista[atributoDoObjeto], div, botaoGerar, img);
+
+            } else {
+                alert('Para enviar um item para a lista, insira-o no espaço em branco e clique em enviar.')
             }
-            
         })
     })
 }
 
-function insereNoHtml (preenchido, div) {
-    if(preenchido) {
-        const li = document.createElement('li');
-        li.classList.add('riscar-item');
-        li.innerHTML = preenchido;
+function insereNoHtml(listaDeProdutos, div, botaoGerar, img) {
 
-        var ul = div.querySelector('[data-lista]');
+    botaoGerar.forEach((elemento) => {
+        elemento.addEventListener(`click`, () => {
 
-        ul.appendChild(li);
-    }
+            removeItem(div, img);
+
+            var inserirNoHtml = div.querySelector(`[data-lista]`);
+
+            for (i = 0; i < listaDeProdutos.length; i++) {
+                inserirNoHtml.appendChild(listaDeProdutos[i]);
+
+            }
+        }) 
+    })
 }
 
-function removeInput (div) {
+function removeInput(div) {
     var teste = div.querySelector('[data-input]');
     teste.innerHTML = "";
+}
+
+function removeItem(div, clicaNaImagem) {
+
+    var imagem = div.querySelectorAll(`[data-img]`);
+
+    imagem.forEach((elemento) => {
+        elemento.addEventListener(`click`, () => {
+            console.log(`clicou`);
+        })
+    });
+        
+    
 }

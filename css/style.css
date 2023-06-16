@@ -96,6 +96,7 @@ ul {
 
 img {
     width: 8%;
+    cursor: pointer;
 }
 
 .riscar-item2 {
@@ -149,6 +150,19 @@ img {
     border: 1px solid var(--cor-titulo);
     border-radius: 10px;
     cursor: pointer;
+    margin: 1px 0 2px 0;
+    
+    
+}
+
+.botao-gera-lista{
+    background-color: rgb(44, 179, 77);
+    width: 100%;
+    color: var(--cor-lista);
+    border: 1px solid rgb(44, 179, 77);
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 2px;
     
 }
 
@@ -160,7 +174,7 @@ img {
 
 @media screen and (max-width:1500px) {
     .conteudo {
-        margin: 0;
+        margin: 0 5em;
     }
 
     .titulo {

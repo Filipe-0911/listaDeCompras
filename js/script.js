@@ -88,7 +88,7 @@ function adicionaItemLista(botao, atributoDoObjeto, div, botaoGerar) {
                 div.querySelector(`.input-text`).value = "";
 
                 
-                insereNoHtml(lista[atributoDoObjeto], div, botaoGerar, img);
+                insereNoHtml(lista[atributoDoObjeto], div, botaoGerar);
 
             } else {
                 alert('Para enviar um item para a lista, insira-o no espaço em branco e clique em enviar.')
@@ -97,12 +97,12 @@ function adicionaItemLista(botao, atributoDoObjeto, div, botaoGerar) {
     })
 }
 
-function insereNoHtml(listaDeProdutos, div, botaoGerar, img) {
+function insereNoHtml(listaDeProdutos, div, botaoGerar) {
 
     botaoGerar.forEach((elemento) => {
         elemento.addEventListener(`click`, () => {
 
-            removeItem(div, img);
+            removeItem(div);
 
             var inserirNoHtml = div.querySelector(`[data-lista]`);
 
@@ -119,7 +119,7 @@ function removeInput(div) {
     teste.innerHTML = "";
 }
 
-function removeItem(div, clicaNaImagem) {
+function removeItem(div) {
 
     var imagem = div.querySelectorAll(`[data-img]`);
 

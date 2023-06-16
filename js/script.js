@@ -80,6 +80,7 @@ function adicionaItemLista(botao, atributoDoObjeto, div, botaoGerar) {
                 img.src = `img/remover.png`
 
                 li.innerHTML = itemInserido;
+                li.dataset.item = itemInserido;
                 li.appendChild(img);
 
                 //console.log(li);
@@ -87,7 +88,7 @@ function adicionaItemLista(botao, atributoDoObjeto, div, botaoGerar) {
                 lista[atributoDoObjeto].push(li);
                 div.querySelector(`.input-text`).value = "";
 
-                
+
                 insereNoHtml(lista[atributoDoObjeto], div, botaoGerar);
 
             } else {
@@ -110,7 +111,7 @@ function insereNoHtml(listaDeProdutos, div, botaoGerar) {
                 inserirNoHtml.appendChild(listaDeProdutos[i]);
 
             }
-        }) 
+        })
     })
 }
 
@@ -124,10 +125,25 @@ function removeItem(div) {
     var imagem = div.querySelectorAll(`[data-img]`);
 
     imagem.forEach((elemento) => {
-        elemento.addEventListener(`click`, () => {
-            console.log(`clicou`);
+        elemento.addEventListener(`click`, () => {                
+            var imgClicada = elemento.parentNode;
+            imgClicada.remove();     
+
+            //var valorDeletaLista = imgClicada.innerText;
+
+            //console.log(valorDeletaLista);
+
+            // var buscaValorDataItem = imgClicada.parentNode;
+            // var teste = buscaValorDataItem.querySelector(`[data-item=${valorDeletaLista}]`);
+
+            
+            // const index = lista.frutas.find(frutas => frutas === teste);
+            // console.log(index)
+            
+            //for(i = 0; i < lista.length; i++) {     }
+            //console.log(buscaValorDataItem)
+            
+
         })
     });
-        
-    
 }

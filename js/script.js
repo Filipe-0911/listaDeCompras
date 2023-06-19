@@ -89,8 +89,6 @@ function adicionaItemLista(botao, atributoDoObjeto, div, botaoGerar) {
                 li.dataset.item = itemInserido;
                 li.appendChild(img);
 
-                //console.log(li);
-
                 lista[atributoDoObjeto].push(li);
                 div.querySelector(`.input-text`).value = "";
 
@@ -98,6 +96,7 @@ function adicionaItemLista(botao, atributoDoObjeto, div, botaoGerar) {
                 insereNoHtml(lista[atributoDoObjeto], div, botaoGerar);
 
             } else {
+
                 alert('Para enviar um item para a lista, insira-o no espaço em branco e clique em enviar.')
             }
         })
@@ -147,15 +146,18 @@ function trocaClasse (div) {
     var itemDaLista = div.querySelectorAll('[data-item]');
 
     itemDaLista.forEach((elemento) => {
-        elemento.addEventListener('click', () => {
+        
+        elemento.addEventListener('click', (evento) => {
 
             var classeDoItem = elemento.classList.value;
 
-            if(classeDoItem == 'riscar-item'){
+            if(classeDoItem == 'riscar-item') {
                 elemento.className = 'riscar-item2';
+                console.log(elemento.classList.value);
 
             } else {
                 elemento.className ='riscar-item';
+                console.log(elemento.classList.value);
             }
         })
     })

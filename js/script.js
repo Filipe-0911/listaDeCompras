@@ -151,13 +151,13 @@ function trocaClasse (div) {
 
             var classeDoItem = elemento.classList.value;
 
-            if(classeDoItem == 'riscar-item') {
-                elemento.className = 'riscar-item2';
-                console.log(elemento.classList.value);
+            console.log(evento.type)
 
-            } else {
-                elemento.className ='riscar-item';
-                console.log(elemento.classList.value);
+            switch(classeDoItem) {
+                case 'riscar-item' : elemento.className = 'riscar-item2'
+                break;
+                case 'riscar-item2' : elemento.className = 'riscar-item'
+                break;
             }
         })
     })

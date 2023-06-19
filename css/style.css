@@ -140,6 +140,8 @@ img {
     border: none;
     border-radius: 3px;
     text-align: center;
+    height: 30px;
+    border: 2px solid #c5c5c5;
     
     
 }
@@ -150,7 +152,8 @@ img {
     border: 1px solid var(--cor-titulo);
     border-radius: 10px;
     cursor: pointer;
-    margin: 1px 0 2px 0;
+    margin: 4px 0 2px 2px;
+    height: 30px;
     
     
 }
@@ -162,7 +165,8 @@ img {
     border: 1px solid rgb(44, 179, 77);
     border-radius: 10px;
     cursor: pointer;
-    margin-bottom: 2px;
+    margin: 2px 0 2px 2px;
+    height: 30px;
     
 }
 

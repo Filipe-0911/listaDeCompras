@@ -13,18 +13,16 @@ var lista = {
 categorias.forEach((elemento) => {
 
     elemento.addEventListener('click', (evento) => {
+
         var verificaElemento = evento.target.parentNode.children[1].innerHTML;
 
         if (verificaElemento != "") {
             removeInput(evento.target.parentNode);
         } else {
             selecionaLista(evento.target.innerHTML, evento.target.parentNode);
-        }
-        
-        
+        }  
     })
 
-    
 })
 
 function selecionaLista(itemClicado, divPrincipal) {
@@ -112,6 +110,7 @@ function insereNoHtml(listaDeProdutos, div, botaoGerar) {
         elemento.addEventListener(`click`, () => {
 
             removeItem(div);
+            trocaClasse(div);
 
             var inserirNoHtml = div.querySelector(`[data-lista]`);
 
@@ -133,12 +132,31 @@ function removeItem(div) {
     var imagem = div.querySelectorAll(`[data-img]`);
 
     imagem.forEach((elemento) => {
+
         elemento.addEventListener(`click`, () => {                
+
             var imgClicada = elemento.parentNode;
+
             imgClicada.remove();
-            
-            
 
         })
     });
+}
+
+function trocaClasse (div) {
+    var itemDaLista = div.querySelectorAll('[data-item]');
+
+    itemDaLista.forEach((elemento) => {
+        elemento.addEventListener('click', () => {
+
+            var classeDoItem = elemento.classList.value;
+
+            if(classeDoItem == 'riscar-item'){
+                elemento.className = 'riscar-item2';
+
+            } else {
+                elemento.className ='riscar-item';
+            }
+        })
+    })
 }

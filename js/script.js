@@ -11,12 +11,20 @@ var lista = {
 };
 
 categorias.forEach((elemento) => {
-    elemento.addEventListener(`dblclick`, (evento) => {
-        selecionaLista(evento.target.innerHTML, evento.target.parentNode)
-    })
+
     elemento.addEventListener('click', (evento) => {
-        removeInput(evento.target.parentNode);
+        var verificaElemento = evento.target.parentNode.children[1].innerHTML;
+
+        if (verificaElemento != "") {
+            removeInput(evento.target.parentNode);
+        } else {
+            selecionaLista(evento.target.innerHTML, evento.target.parentNode);
+        }
+        
+        
     })
+
+    
 })
 
 function selecionaLista(itemClicado, divPrincipal) {
@@ -127,21 +135,8 @@ function removeItem(div) {
     imagem.forEach((elemento) => {
         elemento.addEventListener(`click`, () => {                
             var imgClicada = elemento.parentNode;
-            imgClicada.remove();     
-
-            //var valorDeletaLista = imgClicada.innerText;
-
-            //console.log(valorDeletaLista);
-
-            // var buscaValorDataItem = imgClicada.parentNode;
-            // var teste = buscaValorDataItem.querySelector(`[data-item=${valorDeletaLista}]`);
-
+            imgClicada.remove();
             
-            // const index = lista.frutas.find(frutas => frutas === teste);
-            // console.log(index)
-            
-            //for(i = 0; i < lista.length; i++) {     }
-            //console.log(buscaValorDataItem)
             
 
         })

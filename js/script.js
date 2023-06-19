@@ -109,7 +109,7 @@ function insereNoHtml(listaDeProdutos, div, botaoGerar) {
         elemento.addEventListener(`click`, () => {
 
             removeItem(div);
-            trocaClasse(div);
+            trocaClasse();
 
             var inserirNoHtml = div.querySelector(`[data-lista]`);
 
@@ -142,22 +142,18 @@ function removeItem(div) {
     });
 }
 
-function trocaClasse (div) {
-    var itemDaLista = div.querySelectorAll('[data-item]');
+function trocaClasse () {
+    var itemDaLista = document.querySelectorAll('[data-item]');
 
     itemDaLista.forEach((elemento) => {
         
         elemento.addEventListener('click', (evento) => {
-
-            var classeDoItem = elemento.classList.value;
-
-            console.log(evento.type)
-
-            switch(classeDoItem) {
-                case 'riscar-item' : elemento.className = 'riscar-item2';
-                break;
-                //case 'riscar-item2' : elemento.className = 'riscar-item'; break;
-            }
+            console.log(evento.type);
+            elemento.className = 'riscar-item2';
+        })
+        elemento.addEventListener('dblclick', (evento) => {
+            console.log(evento.type);
+            elemento.className = 'riscar-item';
         })
     })
 }

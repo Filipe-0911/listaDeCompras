@@ -154,10 +154,9 @@ function trocaClasse (div) {
             console.log(evento.type)
 
             switch(classeDoItem) {
-                case 'riscar-item' : elemento.className = 'riscar-item2'
+                case 'riscar-item' : elemento.className = 'riscar-item2';
                 break;
-                case 'riscar-item2' : elemento.className = 'riscar-item'
-                break;
+                //case 'riscar-item2' : elemento.className = 'riscar-item'; break;
             }
         })
     })
